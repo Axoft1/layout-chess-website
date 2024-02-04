@@ -1,0 +1,91 @@
+.header {
+    flex: 1 0 auto;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-image: url(../assets/images/haeder-png.png);
+    background-size: cover;
+    background-position: center;    
+}
+
+.header__container {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header__title {
+    margin-top: 62px;
+}
+
+.header__title h2 {
+    text-align: center;
+}
+
+.header__title h2:last-of-type {
+    text-align: end;
+}
+
+.header__title h2:first-of-type {
+    text-align: start;
+}
+
+.header__title p {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.header__buttons {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+.header__buttons button {
+    width: 263px;
+    height: 72px;
+    border-radius: 66px;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 500;
+    transition: color .4s, background-color .4s;
+}
+
+.header__button_support{
+    background-color: #1F1F1F;
+    color: #FFF;
+}
+.header__button_support:hover{
+    background-color: #FBCE51;
+    color: #1F1F1F;
+}
+.header__button_detailed{    
+    border: solid #1F1F1F;
+}
+.header__button_detailed:hover {
+    background-color: #1F1F1F;
+    color: #FFF;
+}
+
+
+.marquee{
+    background-color:#F54932;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 400;
+}
+.marquee span{
+    display: inline-flex;
+    border:solid;
+    background-color:#fff;
+    margin: .2em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+
