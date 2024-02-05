@@ -1,10 +1,84 @@
-let carousel = document.querySelector('.carousel')
-let buttonLeft = document.querySelector('.participants__button_left')
-let buttonRight = document.querySelector('.participants__button_right')
-let participantsAll = document.querySelector('.participants__all')
-let participantsVisible = document.querySelector('.participants__visible')
+const sliders = document.querySelectorAll('.slider')
+const buttonSlidePrev = document.querySelector('.slider_left')
+const buttonSlideNext = document.querySelector('.slider_right')
+const buttonsDot = document.querySelector('.buttons__dot')
 
-let participants = [
+
+let visibleSlide = 0
+
+const dot = () => {
+    const span = document.createElement('span')
+    span.className = 'dot'
+    return span
+}
+const createDots = () => {
+    for (let i = 0; i < sliders.length; i++) {
+        buttonsDot.append(dot())
+    }
+}
+const displayNon = () => {
+    if (document.querySelectorAll('.dot').length == 0) {
+        createDots()
+    }
+    for (let i = 0; i < sliders.length; i++) {
+        sliders[i].classList.add('none')
+    }
+}
+const createSlider = () => {
+    sliders[visibleSlide].classList.remove('none')
+    document.querySelectorAll('.dot')[visibleSlide].classList.add('active')
+    validButtonSlide()
+}
+const delSlider = (id) => {
+    sliders[id].classList.add('none')
+    document.querySelectorAll('.dot')[visibleSlide].classList.remove('active')
+}
+
+const nextSlider = () => {
+    delSlider(visibleSlide)
+    visibleSlide++
+    createSlider()
+}
+const prevSlider = () => {
+    delSlider(visibleSlide)
+    visibleSlide--
+    createSlider()
+}
+const validButtonSlide = () => {
+    if (visibleSlide >= sliders.length - 1) {
+        buttonSlideNext.disabled = true
+    } else if (visibleSlide === 0) {
+        buttonSlidePrev.disabled = true
+    } else if (visibleSlide < sliders.length - 1 && visibleSlide !== 0) {
+        buttonSlideNext.disabled = false
+        buttonSlidePrev.disabled = false
+    }
+}
+const sliderInit = () => {
+    let w = window.innerWidth
+    if (w < 768) {
+        displayNon()
+        createSlider()
+    }
+}
+buttonSlidePrev.addEventListener('click', prevSlider)
+buttonSlideNext.addEventListener('click', nextSlider)
+window.addEventListener('resize', function () {
+    sliderInit()
+})
+sliderInit()
+
+
+
+/////////======== carousel ========////////////
+
+const carousel = document.querySelector('.carousel')
+const buttonLeft = document.querySelector('.carousel_left')
+const buttonRight = document.querySelector('.carousel_right')
+const participantsAll = document.querySelector('.participants__all')
+const participantsVisible = document.querySelector('.participants__visible')
+
+const participants = [
     { name: 'Хозе-Рауль Капабланка', title: 'Чемпион мира по шахматам', img: './assets/images/participant.png' },
     { name: 'Эммануил Ласкер', title: 'Чемпион мира по шахматам', img: './assets/images/participant.png' },
     { name: 'Александр Алехин', title: 'Чемпион мира по шахматам', img: './assets/images/participant.png' },
@@ -46,7 +120,7 @@ const nextCreateElement = () => {
     carousel.append(createElement(valid(active + 1)))
 }
 const prevCreateElement = () => {
-    
+
     carousel.prepend(createElement(valid(active - 1)))
 }
 
@@ -60,8 +134,8 @@ function valid(number) {
     return number
 }
 
-const nextSlider = () => {
-    participantsVisible.innerHTML = active +1
+const nextCarusel = () => {
+    participantsVisible.innerHTML = active + 1
     if (!flag) return
     flag = !flag
     active = valid(active + 1)
@@ -74,11 +148,11 @@ const nextSlider = () => {
     })
     nextCreateElement()
 }
-const prevSlider = () => {
+const prevCarusel = () => {
     if (!flag) return
     flag = !flag
     active = valid(active - 1)
-    participantsVisible.innerHTML = active ===0? 6: active
+    participantsVisible.innerHTML = active === 0 ? 6 : active
     animate({
         duration: 500,
         draw: function (progress) {
@@ -89,8 +163,8 @@ const prevSlider = () => {
     prevCreateElement()
 }
 
-buttonRight.addEventListener('click', nextSlider)
-buttonLeft.addEventListener('click', prevSlider)
+buttonRight.addEventListener('click', nextCarusel)
+buttonLeft.addEventListener('click', prevCarusel)
 
 const animate = ({ duration, draw, removeElement }) => {
     const start = performance.now()
@@ -112,7 +186,7 @@ const animate = ({ duration, draw, removeElement }) => {
 
 initial()
 setInterval(() => {
-    // nextSlider()
+    // nextCarusel()
 }, 4000)
 
 const widthOffset = document.querySelector('.carousel__item').clientWidth

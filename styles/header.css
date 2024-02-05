@@ -1,17 +1,22 @@
 .header {
-    flex: 1 0 auto;
-    height: 700px;
+    /* max-height: 700px; */
     background-repeat: no-repeat;
     background-image: url(../assets/images/haeder-png.png);
     background-size: cover;
-    background-position: center;    
+    background-position: center;
 }
+
+
 
 .header__container {
     padding-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.header__logo {
+    width: 246px;
 }
 
 .header__title {
@@ -41,6 +46,7 @@
     justify-content: center;
     gap: 16px;
 }
+
 .header__buttons button {
     width: 263px;
     height: 72px;
@@ -51,25 +57,28 @@
     transition: color .4s, background-color .4s;
 }
 
-.header__button_support{
+.header__button_support {
     background-color: #1F1F1F;
     color: #FFF;
 }
-.header__button_support:hover{
+
+.header__button_support:hover {
     background-color: #FBCE51;
     color: #1F1F1F;
 }
-.header__button_detailed{    
+
+.header__button_detailed {
     border: solid #1F1F1F;
 }
+
 .header__button_detailed:hover {
     background-color: #1F1F1F;
     color: #FFF;
 }
 
 
-.marquee{
-    background-color:#F54932;
+.marquee {
+    background-color: #F54932;
     color: #fff;
     height: 60px;
     display: flex;
@@ -78,14 +87,55 @@
     line-height: 1.1;
     font-weight: 400;
 }
-.marquee span{
+
+.marquee span {
     display: inline-flex;
-    border:solid;
-    background-color:#fff;
+    border: solid;
+    background-color: #fff;
     margin: .2em;
     width: 6px;
     height: 6px;
     border-radius: 50%;
 }
 
+@media (max-width: 768px) {
+    .header {
+        /* max-height: auto; */
+        background-image: url(../assets/images/haederApp-png.png);
+    }
 
+    .header__container {
+        padding-top: 18px;
+    }
+
+    .header h2 {
+        font-size: 36px;
+        line-height: 1.1;
+        letter-spacing: 1.24px;
+    }
+
+    .header__logo {
+        width: 213px;
+    }
+
+    .header__title {
+        margin-top: 40px;
+    }
+
+    .header__title p {
+        font-size: 18px;
+    }
+
+    .header__buttons {
+        margin: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .header__button_detailed {
+        background-color: #fff;
+        border: none;
+    }
+}

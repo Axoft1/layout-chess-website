@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
-body {
+html, body {
+    height: 100%;
     font-family: "Golos Text", sans-serif;
     color: #313131;
     font-weight: 400;
@@ -25,23 +26,29 @@ h3 {
     line-height: 135%;
     text-transform: uppercase;
 }
-p{
 
-}
+p {}
 
 .wrapper {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
     display: flex;
-        flex-direction: column;
-        min-height: 100%;
+    flex-direction: column;
+    min-height: 100%;
 }
-
+.content{
+    flex: 1 0 auto;
+}
 .container {
     max-width: 1366px;
     padding: 0 72px;
     margin: 0 auto;
 
     /* border: solid 1px; */
+}
+@media screen {
+    .container{
+        padding: 0 20px;
+    }
 }
