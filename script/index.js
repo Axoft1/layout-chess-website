@@ -1,3 +1,6 @@
+
+/////////======== sliders ========////////////
+
 const sliders = document.querySelectorAll('.slider')
 const buttonSlidePrev = document.querySelector('.slider_left')
 const buttonSlideNext = document.querySelector('.slider_right')
@@ -142,7 +145,8 @@ const nextCarusel = () => {
     animate({
         duration: 500,
         draw: function (progress) {
-            document.querySelector('.carousel__item').style.opacity = 0
+            document.querySelector('.carousel__item').style.width = (widthOffset * (1 - progress)) + 'px'
+            document.querySelector('.carousel__item').style.padding = 0 + 'px'
         },
         removeElement: document.querySelector('.carousel__item')
     })
@@ -156,7 +160,8 @@ const prevCarusel = () => {
     animate({
         duration: 500,
         draw: function (progress) {
-            document.querySelector('.carousel__item:last-child').style.opacity = 0
+            document.querySelector('.carousel__item').style.width = (widthOffset * progress) + 'px'
+            document.querySelector('.carousel__item').style.padding = 0 + 'px'
         },
         removeElement: document.querySelector('.carousel__item:last-child')
     })
@@ -186,7 +191,7 @@ const animate = ({ duration, draw, removeElement }) => {
 
 initial()
 setInterval(() => {
-    // nextCarusel()
+    nextCarusel()
 }, 4000)
 
 const widthOffset = document.querySelector('.carousel__item').clientWidth
